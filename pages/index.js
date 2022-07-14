@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 import { LineChart, PieChart } from "../components/chart";
 import { Icon } from "../components/Icon";
-import { Layout, createClass } from "../components/layout";
+import Layout, { createClass } from "../components/layout";
 
 export default function Dash() {
   const { layout_theme } = useSelector((state) => state.theme);
@@ -10,7 +10,7 @@ export default function Dash() {
   return (
     <Layout title="dash">
       <section className="vstack p-3 align-items-center fh-100">
-        <div className="d-flex gap-5 flex-wrap">
+        <div className="hstack gap-5 flex-wrap justify-content-center">
           <div className={createClass("dash-card rounded-4", layout_theme)}>
             <div className="card-body">
               <div className="card-title gap-5 hstack justify-content-between">
@@ -104,7 +104,7 @@ export default function Dash() {
           </div>
         </div>
 
-        <div className="d-flex mt-5 gap-5">
+        <div className="hstack justify-content-center mt-5 gap-5">
           <div
             className={createClass("dash-graph p-4 rounded-4", layout_theme)}
           >

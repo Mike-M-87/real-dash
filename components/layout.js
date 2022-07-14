@@ -10,7 +10,7 @@ export const createClass = (...classes) => {
   return classes.join(" ");
 };
 
-export function Layout({ children, title }) {
+export default function Layout({ children, title }) {
   const [showNav, setNav] = useState(true);
   const dispatch = useDispatch();
   const { layout_theme, main_theme } = useSelector((state) => state.theme);
