@@ -1,16 +1,176 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
 a {
   color: inherit;
   text-decoration: none;
 }
+a:hover {
+  cursor: pointer;
+}
 
 * {
+  font-family: "Open Sans", sans-serif;
   box-sizing: border-box;
+}
+
+:root {
+  --darkmode-color: rgb(45, 45, 45);
+  --lightmode-color: rgb(235, 235, 235);
+  --darkmode-text-color: lightgrey;
+  --lightmode-text-color: black;
+  --accent-color: rgb(20, 162, 250);
+}
+
+.darkmode {
+  color: var(--darkmode-text-color);
+  background-color: var(--darkmode-color);
+}
+
+.maindarkmode {
+  color: var(--darkmode-text-color);
+  background-color: rgb(20, 20, 20);
+}
+.mainlightmode {
+  color: var(--lightmode-text-color);
+  background-color: white;
+}
+
+.lightmode {
+  color: var(--lightmode-text-color);
+  background-color: var(--lightmode-color);
+}
+
+.bg-accent {
+  background-color: var(--accent-color);
+  color: var(--lightmode-color);
+}
+
+.fh-100 {
+  height: 100vh;
+}
+
+.text-green {
+  color: lightgreen;
+}
+.text-violet {
+  color: violet;
+}
+
+#layout-nav {
+  z-index: 99;
+}
+
+#layout-nav .nav-item {
+  cursor: pointer;
+  position: relative;
+  padding: 0%;
+}
+
+#layout-nav .nav-item-active .active-point {
+  position: absolute;
+  top: -10px;
+  left: -40px;
+  height: 200%;
+  border-radius: 10px;
+  border-right: 10px solid var(--accent-color);
+  background-color: var(--accent-color);
+}
+
+#layout-nav .nav-item:hover {
+  color: var(--accent-color);
+}
+#layout-nav .nav-item-active {
+  color: var(--accent-color);
+}
+
+.shownav-btn {
+  z-index: 9;
+  color: white;
+  background-color: transparent;
+  border: none;
+}
+
+.btn-empty {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+}
+
+.shownav-btn:hover {
+  color: var(--accent-color);
+}
+
+.sidebarshow,
+.sidebarhide {
+  overflow: hidden;
+  transition: 0.5s;
+}
+.sidebarhide {
+  width: 0;
+  padding: 0;
+}
+.sidebarshow {
+  width: 300px;
+  padding: 3%;
+}
+
+.main,
+.mainfull {
+  transition: 0.5s;
+  padding-top: 15px;
+}
+
+.main {
+  margin-left: 300px;
+}
+.mainfull {
+  margin-left: 0;
+}
+
+.main input:focus {
+  outline: none;
+  border-bottom: 1px solid var(--accent-color);
+  transition: 0.5s;
+}
+
+.dash-card {
+  width: 350px;
+  overflow: scroll;
+  padding: 20px;
+}
+
+.dash-card-dark {
+  background-color: var(--darkmode-color);
+  color: var(--darkmode-text-color);
+}
+.dash-card-light {
+  background-color: var(--lightmode-color);
+  color: var(--lightmode-text-color);
+}
+
+.dash-graph {
+  width: 700px;
+  height: 500px;
+}
+
+#chartbox {
+  width: 100%;
+  height: 400px;
+}
+
+.dash-graph select {
+  border: none;
+  border-bottom: 1px solid var(--accent-color);
+  background-color: unset;
+  color: unset;
+}
+
+@media screen and (max-width: 720px) {
+  .main {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .dash-card {
+    width: 100%;
+  }
 }
