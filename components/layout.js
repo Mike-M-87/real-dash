@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import react, { useEffect, useState } from "react";
 import { Icon } from "./Icon";
@@ -48,7 +49,7 @@ export default function Layout({ children, title }) {
         className={createClass(sidebar, "navbar position-fixed", layout_theme)}
       >
         <div className="container-fluid p-2">
-          <div className="vstack mt-1 ms-4 mx-lg-0 gap-4 align-items-center">
+          <div className="navbar-brand fs-6">
             <div className="gap-2 hstack align-items-center">
               <button
                 onClick={(e) => setNav(!showNav)}
@@ -57,37 +58,47 @@ export default function Layout({ children, title }) {
                 <Icon n={"menu"} styles={createClass("fs-3", layout_theme)} />
               </button>
 
-
               <button
-                className="btn-empty hstack overflow-hidden gap-2 align-items-center"
+                className="btn-empty hstack gap-2 align-items-center"
                 data-bs-toggle="collapse"
                 data-bs-target="#profileCollapse"
                 aria-expanded="false"
                 aria-controls="profileCollapse"
               >
-                <Image
+                <img
                   src="/favicon.ico"
-                  className="rounded-circle "
+                  className="rounded-circle"
                   width={50}
                   height={50}
                   alt="profile"
                 />
 
-                <div className="d-none d-lg-flex flex-column align-items-start">
-                  <span className={"text-break"}>Norman SkyLight</span>
+                <div
+                  className={createClass(
+                    "d-none d-lg-flex flex-column align-items-start ",
+                    layout_theme
+                  )}
+                >
+                  <span>Norman SkyLight</span>
                   <small>Director</small>
                 </div>
 
-                <Icon n="expand_more" />
+                <Icon
+                  n="expand_more"
+                  styles={createClass("fs-4", layout_theme)}
+                />
               </button>
             </div>
 
-            <div className="bg-accent collapse" id="profileCollapse">
+            <div
+              className={createClass("collapse", layout_theme)}
+              id="profileCollapse"
+            >
               Buttons and stuff here
             </div>
 
             <button
-              className="btn text-light"
+              className="mt-5 text-light btn"
               style={{ backgroundColor: "#14a2fa" }}
             >
               New Campaign
@@ -95,7 +106,7 @@ export default function Layout({ children, title }) {
             </button>
           </div>
 
-          <ul className="navbar-nav gap-5 mt-5 ms-4 fh-100">
+          <ul className="navbar-nav mt-4 gap-5 mx-4 fh-100">
             <Link href="/">
               <li id="dash" className="nav-item">
                 <Icon styles={"me-4"} n={"dashboard"} />
@@ -105,7 +116,7 @@ export default function Layout({ children, title }) {
             </Link>
 
             <Link href="/organization">
-              <li id="organization" className="nav-item">
+              <li id="organization" className="nav-item d-flex">
                 <Icon styles={"me-4"} n={"corporate_fare"} />
                 Organizations
                 <span className="active-point"></span>
@@ -132,10 +143,7 @@ export default function Layout({ children, title }) {
 
       <main className={createClass(mainwindow, layout_theme)}>
         <nav className={createClass("navbar navbar-expand-sm")}>
-          <button
-            onClick={() => setNav(!showNav)}
-            className="btn"
-          >
+          <button onClick={() => setNav(!showNav)} className="btn">
             <Icon n={"menu"} styles={createClass("fs-3", layout_theme)} />
           </button>
 
@@ -161,19 +169,19 @@ export default function Layout({ children, title }) {
               />
             </form>
 
-            <ul className="navbar-nav gap-4 mx-4 hstack flex-wrap">
+            <ul className="navbar-nav gap-4 mx-4 mt-2 hstack justify-content-center flex-wrap">
               <li className="nav-item active">
                 <button
                   className="btn-empty"
                   onClick={() => dispatch(themeActions.toggleTheme())}
                 >
-                  <Icon n={!dark ? "dark_mode" : "light_mode"} />
+                  <Icon styles="fs-3" n={!dark ? "dark_mode" : "light_mode"} />
                 </button>
               </li>
 
               <li className="nav-item">
                 <button className="btn-empty position-relative">
-                  <Icon n="notifications">
+                  <Icon n="notifications" styles="fs-3">
                     <span className="position-absolute translate-middle badge border border-light rounded-circle bg-danger p-1">
                       <span className="visually-hidden">unread messages</span>
                     </span>
@@ -195,9 +203,7 @@ export default function Layout({ children, title }) {
           </div>
         </nav>
 
-        <section className={createClass(main_theme,"")}>
-          {children}
-        </section>
+        <section className={createClass(main_theme)}>{children}</section>
       </main>
     </>
   );

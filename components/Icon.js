@@ -6,3 +6,4 @@ export function Icon({ n, styles, children }) {
     </>
   );
 }
+// btn-close-white

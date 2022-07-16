@@ -61,6 +61,7 @@ a:hover {
 
 #layout-nav .nav-item {
   cursor: pointer;
+  display: inline;
   position: relative;
 }
 
@@ -93,8 +94,7 @@ a:hover {
   transition: 0.5s;
 }
 .sidebarhide {
-  width: 0;
-  padding: 0;
+  width: 0px;
 }
 .sidebarshow {
   width: 300px;
