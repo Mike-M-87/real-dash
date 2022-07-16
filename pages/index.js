@@ -5,165 +5,136 @@ import { Icon } from "../components/Icon";
 import Layout, { createClass } from "../components/layout";
 
 export default function Dash() {
-  const { layout_theme } = useSelector((state) => state.theme);
+  const { layout_theme,dark } = useSelector((state) => state.theme);
 
   return (
     <Layout title="dash">
-      <section className="vstack p-3 align-items-center fh-100">
-        <div className="hstack gap-5 flex-wrap justify-content-center">
-          <div className={createClass("dash-card rounded-4", layout_theme)}>
-            <div className="card-body">
-              <div className="card-title gap-5 hstack justify-content-between">
-                <Image
-                  src="/favicon.ico"
-                  className="rounded-circle"
-                  width={50}
-                  height={50}
-                  alt="profile"
-                />
-                <Icon n="show_chart" styles="fs-1 text-green" />
-              </div>
-              <div className="mt-4 hstack gap-1">
-                <h4>{"$45,7630"}</h4>
-                <div className="mb-1">
-                  <Icon n="arrow_upward" styles="fw-bold text-green" />
-                  <small>12%</small>
-                </div>
-              </div>
-              <small className="text-secondary">Total Donation</small>
+      <div className="d-flex p-4 gap-5 flex-wrap justify-content-center">
+        <div className={createClass("dash-card rounded-4", layout_theme)}>
+          <div className="hstack justify-content-between">
+            <Image
+              src="/favicon.ico"
+              className="rounded-circle"
+              width={50}
+              height={50}
+              alt="profile"
+            />
+            <Icon n="trending_up" styles="fs-1 text-green" />
+          </div>
+          <div className="mt-4 hstack gap-1">
+            <h4>{"$45,7630"}</h4>
+            <div className="mb-1">
+              <Icon n="arrow_upward" styles="fw-bold text-green" />
+              <small>12%</small>
             </div>
           </div>
-
-          <div className={createClass("dash-card rounded-4", layout_theme)}>
-            <div className="card-body">
-              <div className="card-title gap-5 hstack justify-content-between">
-                <Image
-                  src="/favicon.ico"
-                  className="rounded-circle"
-                  width={50}
-                  height={50}
-                  alt="profile"
-                />
-                <Icon n="trending_down" styles="fs-1 text-danger" />
-              </div>
-              <div className="mt-4 hstack gap-1">
-                <h4>{"$45,7630"}</h4>
-                <div className="mb-1">
-                  <Icon n="arrow_downward" styles="fw-bold text-danger" />
-                  <small>12%</small>
-                </div>
-              </div>
-              <small className="text-secondary">Todays Donation</small>
-            </div>
-          </div>
-
-          <div className={createClass("dash-card rounded-4", layout_theme)}>
-            <div className="card-body">
-              <div className="card-title gap-5 hstack justify-content-between">
-                <Image
-                  src="/favicon.ico"
-                  className="rounded-circle"
-                  width={50}
-                  height={50}
-                  alt="profile"
-                />
-                <Icon n="show_chart" styles="fs-1 text-green" />
-              </div>
-              <div className="mt-4 hstack gap-1">
-                <h4>{"$45,7630"}</h4>
-                <div className="mb-1">
-                  <Icon n="arrow_upward" styles="fw-bold text-green" />
-                  <small>12%</small>
-                </div>
-              </div>
-              <small className="text-secondary">Total Donation</small>
-            </div>
-          </div>
-
-          <div className={createClass("dash-card rounded-4", layout_theme)}>
-            <div className="card-body">
-              <div className="card-title gap-5 hstack justify-content-between">
-                <Image
-                  src="/favicon.ico"
-                  className="rounded-circle"
-                  width={50}
-                  height={50}
-                  alt="profile"
-                />
-                <Icon n="show_chart" styles="fs-1 text-green" />
-              </div>
-              <div className="mt-4 hstack gap-1">
-                <h4>{"$45,7630"}</h4>
-                <div className="mb-1">
-                  <Icon n="arrow_upward" styles="fw-bold text-green" />
-                  <small>12%</small>
-                </div>
-              </div>
-              <small className="text-secondary">Total Donation</small>
-            </div>
-          </div>
+          <small className="text-secondary">Total Donation</small>
         </div>
 
-        <div className="hstack justify-content-center mt-5 gap-5">
-          <div
-            className={createClass("dash-graph p-4 rounded-4", layout_theme)}
-          >
-            <div className="vstack">
-              <div className="hstack gap-3">
-                <span className="bg-danger bg-gradient mb-2 p-2 rounded-circle"></span>
-                <h4>Donation Value</h4>
-                <select
-                  id="interval"
-                  className={createClass(
-                    " p-2 rounded-3  border-secondary",
-                    layout_theme
-                  )}
-                  style={{ backgroundColor: "unset", color: "unset" }}
-                >
-                  <option value="today">Today</option>
-                  <option value="week">This Week</option>
-                  <option value="month">This Month</option>
-                  <option value="year">This Year</option>
-                  <option value="all-time">All Time</option>
-                </select>
-              </div>
-
-              <div id="chartbox">
-                <LineChart id data={sampledata} />
-              </div>
+        <div className={createClass("dash-card rounded-4", layout_theme)}>
+          <div className="hstack justify-content-between">
+            <Image
+              src="/favicon.ico"
+              className="rounded-circle"
+              width={50}
+              height={50}
+              alt="profile"
+            />
+            <Icon n="trending_down" styles="fs-1 text-danger" />
+          </div>
+          <div className="mt-4 hstack gap-1">
+            <h4>{"$45,7630"}</h4>
+            <div className="mb-1">
+              <Icon n="arrow_downward" styles="fw-bold text-danger" />
+              <small>12%</small>
             </div>
           </div>
-
-          <div
-            className={createClass("dash-graph p-4 rounded-4", layout_theme)}
-          >
-            <div className="vstack">
-              <div className="hstack gap-3">
-                <span className="bg-danger bg-gradient mb-2 p-2 rounded-circle"></span>
-                <h4>Donation Value</h4>
-                <select
-                  id="interval"
-                  className={createClass(
-                    " p-2 rounded-3  border-secondary",
-                    layout_theme
-                  )}
-                  style={{ backgroundColor: "unset", color: "unset" }}
-                >
-                  <option value="today">Today</option>
-                  <option value="week">This Week</option>
-                  <option value="month">This Month</option>
-                  <option value="year">This Year</option>
-                  <option value="all-time">All Time</option>
-                </select>
-              </div>
-
-              <div id="chartbox">
-                <PieChart id data={sampledata2} />
-              </div>
-            </div>
-          </div>
+          <small className="text-secondary">Total Donation</small>
         </div>
-      </section>
+
+        <div className={createClass("dash-card rounded-4", layout_theme)}>
+          <div className="hstack justify-content-between">
+            <Image
+              src="/favicon.ico"
+              className="rounded-circle"
+              width={50}
+              height={50}
+              alt="profile"
+            />
+            <Icon n="trending_down" styles="fs-1 text-danger" />
+          </div>
+          <div className="mt-4 hstack gap-1">
+            <h4>{"$45,7630"}</h4>
+            <div className="mb-1">
+              <Icon n="arrow_downward" styles="fw-bold text-danger" />
+              <small>12%</small>
+            </div>
+          </div>
+          <small className="text-secondary">Total Donation</small>
+        </div>
+
+        <div className={createClass("dash-card rounded-4", layout_theme)}>
+          <div className="hstack justify-content-between">
+            <Image
+              src="/favicon.ico"
+              className="rounded-circle"
+              width={50}
+              height={50}
+              alt="profile"
+            />
+            <Icon n="trending_up" styles="fs-1 text-green" />
+          </div>
+          <div className="mt-4 hstack gap-1">
+            <h4>{"$45,7630"}</h4>
+            <div className="mb-1">
+              <Icon n="arrow_upward" styles="fw-bold text-green" />
+              <small>12%</small>
+            </div>
+          </div>
+          <small className="text-secondary">Total Donation</small>
+        </div>
+      </div>
+
+      <div className="vstack align-items-center p-4 gap-5">
+        
+        <div className={createClass("dash-graph p-4 rounded-4", layout_theme)}>
+          <div className="hstack gap-3">
+            <Icon n="circle" styles="text-danger" />
+            <span>Donation Analytics</span>
+            <select
+              id="interval"
+              className={createClass("p-2 rounded-3 ms-auto")}
+              style={{ backgroundColor: "unset", color: "unset" }}
+            >
+              <option value="today">Today</option>
+              <option value="week">This Week</option>
+              <option value="month">This Month</option>
+              <option value="year">This Year</option>
+              <option value="all-time">All Time</option>
+            </select>
+          </div>
+          <LineChart data={sampledata} />
+        </div>
+
+        <div className={createClass("dash-graph p-4 rounded-4", layout_theme)}>
+          <div className="hstack gap-3">
+            <Icon n="circle" styles="text-danger" />
+            <span>Donation Analytics</span>
+            <select
+              id="interval"
+              className={createClass("p-2 rounded-3 ms-auto")}
+              style={{ backgroundColor: "unset", color: "unset" }}
+            >
+              <option value="today">Today</option>
+              <option value="week">This Week</option>
+              <option value="month">This Month</option>
+              <option value="year">This Year</option>
+              <option value="all-time">All Time</option>
+            </select>
+          </div>
+          <PieChart data={sampledata2} />
+        </div>
+      </div>
     </Layout>
   );
 }
@@ -226,5 +197,11 @@ var sampledata2 = [
     label: "haskell",
     value: 295,
     color: "hsl(71, 70%, 50%)",
+  },
+  {
+    id: "solidity",
+    label: "solidity",
+    value: 214,
+    color: "hsl(78, 70%, 50%)",
   },
 ];

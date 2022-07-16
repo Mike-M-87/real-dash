@@ -5,6 +5,7 @@ import classNames from "classnames";
 import Image from "next/image";
 import { themeActions } from "../redux/reducers";
 import { useDispatch, useSelector } from "react-redux";
+import store from "../redux/store";
 
 export const createClass = (...classes) => {
   return classes.join(" ");
@@ -13,7 +14,18 @@ export const createClass = (...classes) => {
 export default function Layout({ children, title }) {
   const [showNav, setNav] = useState(true);
   const dispatch = useDispatch();
-  const { layout_theme, main_theme } = useSelector((state) => state.theme);
+  const { layout_theme, main_theme, dark } = useSelector(
+    (state) => state.theme
+  );
+
+  useEffect(() => {
+    if (localStorage.getItem("dark-mode") == "true") {
+      dispatch(themeActions.setDarkTheme());
+    }
+    store.subscribe(() => {
+      localStorage.setItem("dark-mode", store.getState().theme.dark);
+    });
+  }, [dispatch]);
 
   var sidebar = classNames({
     sidebarshow: showNav === true,
@@ -35,20 +47,43 @@ export default function Layout({ children, title }) {
         id="layout-nav"
         className={createClass(sidebar, "navbar position-fixed", layout_theme)}
       >
-        <div className="container-fluid">
-          <div className="navbar-brand mt-2 vstack gap-4 align-items-center">
-            <div className="hstack align-items-center">
-              <h3 className={createClass(layout_theme, "mx-auto")}>Title</h3>
-
+        <div className="container-fluid p-2">
+          <div className="vstack mt-1 ms-4 mx-lg-0 gap-4 align-items-center">
+            <div className="gap-2 hstack align-items-center">
               <button
                 onClick={(e) => setNav(!showNav)}
-                className={createClass(
-                  "me-0 d-md-none shownav-btn",
-                  layout_theme
-                )}
+                className={"me-auto d-lg-none btn"}
               >
-                <Icon n={"close"} styles={createClass(layout_theme, "mb-2")} />
+                <Icon n={"menu"} styles={createClass("fs-3", layout_theme)} />
               </button>
+
+
+              <button
+                className="btn-empty hstack overflow-hidden gap-2 align-items-center"
+                data-bs-toggle="collapse"
+                data-bs-target="#profileCollapse"
+                aria-expanded="false"
+                aria-controls="profileCollapse"
+              >
+                <Image
+                  src="/favicon.ico"
+                  className="rounded-circle "
+                  width={50}
+                  height={50}
+                  alt="profile"
+                />
+
+                <div className="d-none d-lg-flex flex-column align-items-start">
+                  <span className={"text-break"}>Norman SkyLight</span>
+                  <small>Director</small>
+                </div>
+
+                <Icon n="expand_more" />
+              </button>
+            </div>
+
+            <div className="bg-accent collapse" id="profileCollapse">
+              Buttons and stuff here
             </div>
 
             <button
@@ -60,7 +95,7 @@ export default function Layout({ children, title }) {
             </button>
           </div>
 
-          <ul className="navbar-nav gap-5 mt-5 ms-3 fh-100">
+          <ul className="navbar-nav gap-5 mt-5 ms-4 fh-100">
             <Link href="/">
               <li id="dash" className="nav-item">
                 <Icon styles={"me-4"} n={"dashboard"} />
@@ -99,7 +134,7 @@ export default function Layout({ children, title }) {
         <nav className={createClass("navbar navbar-expand-sm")}>
           <button
             onClick={() => setNav(!showNav)}
-            className="mb-1 navbar-brand shownav-btn"
+            className="btn"
           >
             <Icon n={"menu"} styles={createClass("fs-3", layout_theme)} />
           </button>
@@ -121,10 +156,7 @@ export default function Layout({ children, title }) {
               <Icon n={"search"} />
               <input
                 type="text"
-                className={
-                  "form-control-plaintext " +
-                  (layout_theme == "darkmode" && "text-light")
-                }
+                className={"form-control-plaintext " + (dark && "text-light")}
                 placeholder="Search"
               />
             </form>
@@ -135,9 +167,7 @@ export default function Layout({ children, title }) {
                   className="btn-empty"
                   onClick={() => dispatch(themeActions.toggleTheme())}
                 >
-                  <Icon
-                    n={layout_theme == "lightmode" ? "dark_mode" : "light_mode"}
-                  />
+                  <Icon n={!dark ? "dark_mode" : "light_mode"} />
                 </button>
               </li>
 
@@ -159,13 +189,15 @@ export default function Layout({ children, title }) {
                   height={32}
                   alt="profile"
                 />
-                <span className="d-none d-lg-block">Norman SkyLight</span>
+                <span className="d-none d-xl-block">Norman SkyLight</span>
               </li>
             </ul>
           </div>
         </nav>
 
-        <section className={main_theme}>{children}</section>
+        <section className={createClass(main_theme,"")}>
+          {children}
+        </section>
       </main>
     </>
   );

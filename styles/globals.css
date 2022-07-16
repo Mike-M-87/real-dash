@@ -28,6 +28,7 @@ a:hover {
   color: var(--darkmode-text-color);
   background-color: rgb(20, 20, 20);
 }
+
 .mainlightmode {
   color: var(--lightmode-text-color);
   background-color: white;
@@ -61,14 +62,13 @@ a:hover {
 #layout-nav .nav-item {
   cursor: pointer;
   position: relative;
-  padding: 0%;
 }
 
 #layout-nav .nav-item-active .active-point {
   position: absolute;
-  top: -10px;
-  left: -40px;
-  height: 200%;
+  top: -7px;
+  left: -45px;
+  height: 150%;
   border-radius: 10px;
   border-right: 10px solid var(--accent-color);
   background-color: var(--accent-color);
@@ -81,21 +81,10 @@ a:hover {
   color: var(--accent-color);
 }
 
-.shownav-btn {
-  z-index: 9;
-  color: white;
-  background-color: transparent;
-  border: none;
-}
-
 .btn-empty {
   background-color: transparent;
   border: none;
   color: inherit;
-}
-
-.shownav-btn:hover {
-  color: var(--accent-color);
 }
 
 .sidebarshow,
@@ -137,34 +126,22 @@ a:hover {
   padding: 20px;
 }
 
-.dash-card-dark {
-  background-color: var(--darkmode-color);
-  color: var(--darkmode-text-color);
-}
-.dash-card-light {
-  background-color: var(--lightmode-color);
-  color: var(--lightmode-text-color);
+.dash-graph {
+  width: 850px;
+  height: 600px;
 }
 
-#chartbox {
-  width: 500px;
-  height: 350px;
-}
-
-.dash-graph select {
-  border: none;
-  border-bottom: 1px solid var(--accent-color);
-  background-color: unset;
-  color: unset;
-}
-
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 850px) {
   .main {
     margin-left: 0;
   }
+  .dash-graph {
+    width: 100%;
+  }
 }
 
-@media screen and (max-width: 400px) {
+
+@media screen and (max-width: 450px) {
   .dash-card {
     width: 100%;
   }
