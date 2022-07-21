@@ -12,8 +12,10 @@ a:hover {
 }
 
 :root {
-  --darkmode-color: rgb(45, 45, 45);
-  --lightmode-color: rgb(235, 235, 235);
+  --darkmode-color: rgb(30, 30, 30);
+  --lightmode-color: rgb(240, 242, 245);
+  /* --lightmode-color: #e8f3f8; */
+
   --darkmode-text-color: lightgrey;
   --lightmode-text-color: black;
   --accent-color: rgb(20, 162, 250);
@@ -26,7 +28,7 @@ a:hover {
 
 .maindarkmode {
   color: var(--darkmode-text-color);
-  background-color: rgb(20, 20, 20);
+  background-color: rgb(10, 10, 10);
 }
 
 .mainlightmode {
@@ -61,14 +63,14 @@ a:hover {
 
 #layout-nav .nav-item {
   cursor: pointer;
-  display: inline;
+  display: flex;
   position: relative;
 }
 
 #layout-nav .nav-item-active .active-point {
   position: absolute;
   top: -7px;
-  left: -45px;
+  left: -25px;
   height: 150%;
   border-radius: 10px;
   border-right: 10px solid var(--accent-color);
@@ -97,7 +99,7 @@ a:hover {
   width: 0px;
 }
 .sidebarshow {
-  width: 300px;
+  width: 250px;
   padding: 3%;
 }
 
@@ -108,7 +110,7 @@ a:hover {
 }
 
 .main {
-  margin-left: 300px;
+  margin-left: 250px;
 }
 .mainfull {
   margin-left: 0;
@@ -124,11 +126,13 @@ a:hover {
   width: 350px;
   overflow: scroll;
   padding: 20px;
+  box-shadow: 0px 0px 5px 0px var(--accent-color);
 }
 
 .dash-graph {
   width: 850px;
   height: 600px;
+  box-shadow: 0px 0px 5px 0px var(--accent-color);
 }
 
 @media screen and (max-width: 850px) {

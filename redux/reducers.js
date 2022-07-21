@@ -10,8 +10,10 @@ export const themeSlice = createSlice({
 
   reducers: {
     toggleTheme: (state) => {
-      state.layout_theme = state.layout_theme == "darkmode" ? "lightmode" : "darkmode";
-      state.main_theme = state.main_theme == "maindarkmode" ? "mainlightmode" : "maindarkmode";
+      state.layout_theme =
+        state.layout_theme == "darkmode" ? "lightmode" : "darkmode";
+      state.main_theme =
+        state.main_theme == "maindarkmode" ? "mainlightmode" : "maindarkmode";
       state.dark = !state.dark;
     },
     setLightTheme: (state) => {
@@ -23,8 +25,22 @@ export const themeSlice = createSlice({
       state.layout_theme = "darkmode";
       state.main_theme = "maindarkmode";
       state.dark = true;
-    }
+    },
   },
 });
 
 export const themeActions = themeSlice.actions;
+
+export const sidebarSlice = createSlice({
+  name: "sidebar",
+  initialState: {
+    showNav: true,
+  },
+  reducers: {
+    toggle: (state) => {
+      state.showNav = !state.showNav;
+    },
+  },
+});
+
+export const sidebarActions = sidebarSlice.actions;
