@@ -168,7 +168,7 @@ export default function Layout({ children, title }) {
               <li className="nav-item active">
                 <button
                   className="btn-empty"
-                  onClick={() => dispatch(sidebarActions.toggle())}
+                  onClick={() => dispatch(themeActions.toggleTheme())}
                 >
                   <Icon styles="fs-4" n={!dark ? "dark_mode" : "light_mode"} />
                 </button>
